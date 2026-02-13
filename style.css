@@ -980,47 +980,13 @@ body.mode-home .page{ padding-top: 14px; }
   border: 1px solid rgba(255,255,255,.12);
   background: rgba(255,255,255,.03);
 }
-/* ===========================
-   HERO LOGO IMPACTO MAXIMO 🔥
-   =========================== */
 
-.hero-full-logo{
-  align-items:center;
-  text-align:center;
-  padding: 28px 20px;
-  gap:18px;
-}
 
-.hero-logo-wrap{
-  width:100%;
+/* ✅ Badge + GIF lado a lado (Biblioteca) */
+.ex-badge-row{
   display:flex;
-  justify-content:center;
   align-items:center;
-}
-
-.hero-logo-big{
-  width: 180px;
-  height: 180px;
-  object-fit: contain;
-  border-radius: 999px;
-  background: transparent;
-  filter: 
-    drop-shadow(0 0 25px rgba(59,130,246,.45))
-    drop-shadow(0 12px 40px rgba(0,0,0,.55));
-  transition: transform .4s ease, filter .4s ease;
-}
-
-/* leve efeito quando abre */
-.hero-logo-big:hover{
-  transform: scale(1.05);
-  filter: 
-    drop-shadow(0 0 35px rgba(59,130,246,.65))
-    drop-shadow(0 18px 50px rgba(0,0,0,.65));
-}
-
-@media (max-width: 480px){
-  .hero-logo-big{
-    width:150px;
-    height:150px;
-  }
+  justify-content:space-between;
+  gap: 12px;
+  margin-top: 8px;
 }
