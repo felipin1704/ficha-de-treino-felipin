@@ -265,7 +265,7 @@ function montarBiblioteca(){
       const key = ex.nome.trim().toLowerCase();
       if (!map.has(key)){
         map.set(key, {
-          nome: ex.finalNome,
+          nome: ex.nome,
           series: ex.series,
           repsAlvo: ex.repsAlvo,
           descansoSeg: ex.descansoSeg,
@@ -335,8 +335,7 @@ window.abrirBiblioteca = function(){
   el("workarea").style.display = "none";
 
   renderBiblioteca(true);
-  try { renderTreinosSalvos(); } catch(e) {}
-  wireSalvarTreinoBtn();
+  renderTreinosSalvos();
   salvarBuilder();
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
@@ -537,7 +536,8 @@ window.comecarTreinoMontado = function(){
   el("home").style.display = "none";
   el("workarea").style.display = "block";
 
-  
+  renderTreino();
+};
 
 window.salvarTreinoMontado = function(){
   const selectedMap = builderState.selecionados || {};
@@ -551,12 +551,9 @@ window.salvarTreinoMontado = function(){
 
   const inp = document.getElementById("builderWorkoutName");
   const nome = String(inp?.value || "").trim();
-  let finalNome = nome;
-  if (!finalNome){
-    const d = new Date();
-    const dd = String(d.getDate()).padStart(2,"0");
-    const mm = String(d.getMonth()+1).padStart(2,"0");
-    finalNome = `Treino do dia ${dd}/${mm}`;
+  if (!nome){
+    alert("Digite um nome para salvar (ex: Pernas A).");
+    return;
   }
 
   const saved = loadSavedWorkouts();
@@ -660,12 +657,6 @@ window.limparTreinosSalvos = function(){
 function escapeHtml(str){
   return String(str).replace(/[&<>"']/g, (m)=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[m]));
 }
-
-
-renderTreino();
-};
-
-
 
 function setChipHome(textoFort = "Escolha um treino") {
   const chip = document.querySelector(".chip.chip-accent");
