@@ -6,7 +6,7 @@
   <title>Ficha de Treino</title>
 
   <!-- ✅ cache-buster: MUDA a cada atualização -->
-  <link rel="stylesheet" href="./style.css?v=20260212-1" />
+  <link rel="stylesheet" href="./style.css?v=20260215-1" />
 </head>
 
 <body class="mode-home">
@@ -30,19 +30,52 @@
 
     <!-- HOME -->
     <section class="home" id="home">
-      <div class="home-hero">
-        <img class="hero-logo" src="./assets/logo.png" alt="Logo" onerror="this.style.display='none'">
-        <div class="hero-kicker">Escolha seu treino</div>
-        <div class="hero-pick" id="treinoSelecionadoLabel">Selecione um treino abaixo 👇</div>
+            <div class="home-hero home-start">
+        <div class="hero-kicker hero-title-big">Escolha seu treino</div>
+
+        <div class="hero-form">
+          <div class="hero-field">
+            <label for="goalSelect">🎯 Objetivo</label>
+            <select id="goalSelect">
+              <option value="hipertrofia">Hipertrofia</option>
+              <option value="forca">Força</option>
+              <option value="emagrecimento">Emagrecimento</option>
+            </select>
+          </div>
+
+          <div class="hero-field">
+            <label for="levelSelect">📈 Nível</label>
+            <select id="levelSelect">
+              <option value="iniciante">Iniciante</option>
+              <option value="intermediario" selected>Intermediário</option>
+              <option value="avancado">Avançado</option>
+            </select>
+          </div>
+
+          <div class="hero-field">
+            <label for="focusSelect">🏋️ Tipo</label>
+            <select id="focusSelect">
+              <option value="superior">Superior</option>
+              <option value="inferior" selected>Inferior</option>
+            </select>
+          </div>
+        </div>
+
         <div class="hero-quote" id="fraseMotivacional">“Hoje é dia de evoluir.”</div>
 
-        <button class="hero-btn is-disabled" id="btnComecarTreino" type="button" onclick="iniciarTreinoSelecionado()">
+        <button class="hero-btn" id="btnComecarTreino" type="button" onclick="iniciarTreinoPrincipal()">
           🚀 Começar treino
         </button>
 
         <button class="hero-btn hero-btn-secondary" id="btnAbrirBiblioteca" type="button" onclick="abrirBiblioteca()">
           🧩 Montar treino do dia
         </button>
+
+        <button class="hero-btn hero-btn-secondary" id="btnAbrirTreinosSalvos" type="button" onclick="abrirTreinosSalvos()">
+          ⭐ Treino salvo
+        </button>
+
+        <div class="hero-pick" id="treinoSelecionadoLabel">Dica: escolha objetivo, nível e tipo para recomendar seu treino.</div>
       </div>
 
       <!-- BIBLIOTECA / MONTADOR -->
@@ -81,31 +114,12 @@
 
       </section>
 
-      <div class="home-grid" id="listaTreinos">
+            <details class="home-details">
+        <summary class="home-details-summary">Ver treinos completos</summary>
+        <div class="home-grid" id="listaTreinos">
         <button class="card train" data-treino="Inferior 1" type="button" onclick="selecionarTreino('Inferior 1')">
           <div class="train-top"><h3>🦵 Treino Completo Inferior 1</h3><span class="arrow">→</span></div>
-          <p class="sub2">Quadríceps + glúteo</p>
-          <p class="meta">Registrar séries • Ver progresso • Sugestão de carga</p>
-        </button>
-
-        <button class="card train" data-treino="Superior 1" type="button" onclick="selecionarTreino('Superior 1')">
-          <div class="train-top"><h3>🏋️ Treino Completo Superior 1</h3><span class="arrow">→</span></div>
-          <p class="sub2">Peito + tríceps</p>
-          <p class="meta">Registrar séries • Ver progresso • Sugestão de carga</p>
-        </button>
-
-        <button class="card train" data-treino="Inferior 2" type="button" onclick="selecionarTreino('Inferior 2')">
-          <div class="train-top"><h3>🦵 Treino Completo Inferior 2</h3><span class="arrow">→</span></div>
-          <p class="sub2">Posterior + glúteo</p>
-          <p class="meta">Registrar séries • Ver progresso • Sugestão de carga</p>
-        </button>
-
-        <button class="card train" data-treino="Superior 2" type="button" onclick="selecionarTreino('Superior 2')">
-          <div class="train-top"><h3>🏋️ Treino Completo Superior 2</h3><span class="arrow">→</span></div>
-          <p class="sub2">Costas + bíceps</p>
-          <p class="meta">Registrar séries • Ver progresso • Sugestão de carga</p>
-        </button>
-      </div>
+      </details>
     </section>
 
     <!-- WORKAREA -->
@@ -163,7 +177,7 @@
   </nav>
 
   <!-- ✅ cache-buster no script também -->
-  <script defer src="./script.js?v=20260212-1"></script>
+  <script defer src="./script.js?v=20260215-1"></script>
 
   <!-- ❌ IMPORTANTE: por enquanto NÃO registrar service worker (cache atrapalha muito) -->
   <!-- <script>
@@ -173,3 +187,4 @@
   </script> -->
 </body>
 </html>
+
